@@ -18,7 +18,9 @@ public:
     void getCoefficientsFromString();
     void getVariableNamesFromString();
 
+    [[nodiscard]] const std::string &getMEquation() const;
     [[nodiscard]] const std::vector<char>& getMVariables() const;
+    [[nodiscard]] const std::vector<double> &getMCoefficients() const;
 };
 
 #endif //PROJECT_EQUATION_H
