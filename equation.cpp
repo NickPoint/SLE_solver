@@ -1,6 +1,7 @@
 #include "equation.h"
 #include <algorithm>
 #include <regex>
+#include <iostream>
 
 Equation::Equation(std::string equation) {
     equation.erase(std::remove_if(equation.begin(), equation.end(), [](char c) { return std::isspace(c); }), equation.end());
@@ -12,12 +13,19 @@ Equation::Equation(std::string equation) {
 }
 
 void Equation::getCoefficientsFromString() {
-    std::regex pattern("(\\d+(.\\d+)?)?[A-Za-z]");
+    std::regex pattern("(-?\\s*)(\\d+(.\\d+)?)?[A-Za-z]");
     auto words_begin = std::sregex_iterator(m_equation.begin(), m_equation.end(), pattern);
     auto words_end = std::sregex_iterator();
     for (std::sregex_iterator& i = words_begin; i != words_end; ++i) {
-        if ((*i).str().size() > 1) m_coefficients.push_back(std::stod((*i).str()));
-        else m_coefficients.push_back(1);
+        std::cout << (*i).str() << "\n";
+        if ((*i).str().find('-') != std::string::npos) {
+            if ((*i).str().size() > 2) m_coefficients.push_back(std::stod((*i).str()));
+            else m_coefficients.push_back(-1);
+        }
+        else {
+            if ((*i).str().size() > 1) m_coefficients.push_back(std::stod((*i).str()));
+            else m_coefficients.push_back(1);
+        }
     }
 }
 
@@ -37,4 +45,8 @@ const std::string &Equation::getMEquation() const {
 
 const std::vector<double> &Equation::getMCoefficients() const {
     return m_coefficients;
+}
+
+double Equation::getConstant() const {
+    return constant;
 }

@@ -6,10 +6,15 @@
 using namespace std;
 
 class SLESolver {
-    vector<vector<double>> m_matrix;
+private:
+    vector<vector<double>> matrix;
     vector<double> m_constants;
 
+public:
+    SLESolver(const vector<vector<double>> &mMatrix, const vector<double> &mConstants);
+
     void solveSLE();
+    double getSolution(int index) const;
 };
 
 

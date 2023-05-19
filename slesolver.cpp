@@ -3,63 +3,58 @@
 #include <iostream>
 
 void SLESolver::solveSLE() {
-    int n = m_constants.size();
+    std::vector<std::vector<double>> matrix = {{2, 1, 15}, {3, -1, 5}};
+    int n = matrix.size();
 
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         // Search for maximum in this column
-        double maxEl = abs(m_matrix[i][i]);
+        double maxEl = std::abs(matrix[i][i]);
         int maxRow = i;
-        for (int k = i + 1; k < n; k++)
-        {
-            if (abs(m_matrix[k][i]) > maxEl)
-            {
-                maxEl = abs(m_matrix[k][i]);
+        for (int k = i + 1; k < n; k++) {
+            if (std::abs(matrix[k][i]) > maxEl) {
+                maxEl = std::abs(matrix[k][i]);
                 maxRow = k;
             }
         }
 
         // Swap maximum row with current row (column by column)
-        for (int k = i; k < n + 1; k++)
-        {
-            double tmp = m_matrix[maxRow][k];
-            m_matrix[maxRow][k] = m_matrix[i][k];
-            m_matrix[i][k] = tmp;
+        for (int k = i; k < n + 1; k++) {
+            std::swap(matrix[maxRow][k], matrix[i][k]);
         }
 
         // Make all rows below this one 0 in current column
-        for (int k = i + 1; k < n; k++)
-        {
-            double c = -m_matrix[k][i] / m_matrix[i][i];
-            for (int j = i; j < n + 1; j++)
-            {
-                if (i == j)
-                {
-                    m_matrix[k][j] = 0;
-                }
-                else
-                {
-                    m_matrix[k][j] += c * m_matrix[i][j];
+        for (int k = i + 1; k < n; k++) {
+            double c = -matrix[k][i] / matrix[i][i];
+            for (int j = i; j < n + 1; j++) {
+                if (i == j) {
+                    matrix[k][j] = 0;
+                } else {
+                    matrix[k][j] += c * matrix[i][j];
                 }
             }
         }
     }
 
     // Solve equation Ax=b for an upper triangular matrix A
-    vector<double> x(n);
-    for (int i = n - 1; i >= 0; i--)
-    {
-        x[i] = m_matrix[i][n] / m_matrix[i][i];
-        for (int k = i - 1; k >= 0; k--)
-        {
-            m_matrix[k][n] -= m_matrix[k][i] * x[i];
+    std::vector<double> solutions(n);
+    for (int i = n - 1; i >= 0; i--) {
+        solutions[i] = matrix[i][n] / matrix[i][i];
+        for (int k = i - 1; k >= 0; k--) {
+            matrix[k][n] -= matrix[k][i] * solutions[i];
         }
     }
 
-    // Print solution
-    cout << "Solution:\n";
-    for (int i = 0; i < n; i++)
-    {
-        cout << "x[" << i << "]=" << x[i] << endl;
+    // Print solutions
+    std::cout << "Solution:\n";
+    for (int i = 0; i < n; i++) {
+        std::cout << "x[" << i << "] = " << solutions[i] << std::endl;
     }
 }
+
+double SLESolver::getSolution(int index) const {
+    return matrix[index][m_constants.size()];
+}
+
+SLESolver::SLESolver(const vector<vector<double>> &mMatrix, const vector<double> &mConstants) : matrix(mMatrix),
+                                                                                                m_constants(
+                                                                                                        mConstants) {}

@@ -22,6 +22,7 @@ public:
     [[nodiscard]] const std::string &getMEquation() const;
     [[nodiscard]] const std::vector<char>& getMVariables() const;
     [[nodiscard]] const std::vector<double> &getMCoefficients() const;
+    [[nodiscard]] double getConstant() const;
 };
 
 #endif //PROJECT_EQUATION_H
