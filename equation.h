@@ -10,13 +10,12 @@ private:
     std::string m_equation;
     unsigned int m_numberOfVariables;
     std::vector<char> m_variables;
-    std::vector<double> m_coefficients;
-    double constant;
+    std::vector<double> m_arguments;
 
 public:
     explicit Equation(std::string equation);
 
-    void getCoefficientsFromString();
+    void getArgumentsFromString();
     void getVariableNamesFromString();
 
     [[nodiscard]] const std::string &getMEquation() const;

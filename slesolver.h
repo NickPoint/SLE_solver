@@ -6,9 +6,11 @@
 using namespace std;
 
 class SLESolver {
+private:
     vector<vector<double>> m_matrix;
-    vector<double> m_constants;
 
+public:
+    explicit SLESolver(const vector<vector<double>> &mMatrix);
     void solveSLE();
 };
 

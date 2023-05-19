@@ -6,7 +6,7 @@
 
 class SystemOfEquations {
 private:
-    std::vector<std::vector<double>> m_equations;
+    std::vector<std::vector<double>> m_arguments;
     std::vector<char> m_variables;
 public:
 
@@ -17,7 +17,7 @@ public:
 
 //    template<typename... Args>
 //    void process_args(const Equation& eq, Args... args) {
-//        m_equations.push_back(eq);
+//        m_arguments.push_back(eq);
 //        process_args(args...);
 //    }
 //
