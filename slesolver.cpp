@@ -3,6 +3,7 @@
 #include <iostream>
 
 void SLESolver::solveSLE() {
+    auto m_matrix = sle.getMEquations();
     int n = m_matrix.size();
 
     for (int i = 0; i < n; i++) {
@@ -46,8 +47,9 @@ void SLESolver::solveSLE() {
     // Print solutions
     std::cout << "Solution:\n";
     for (int i = 0; i < n; i++) {
-        std::cout << "x[" << i << "] = " << solutions[i] << std::endl;
+        std::cout << sle.getMVariables().at(i) << ": " << solutions[i] << std::endl;
     }
 }
 
-SLESolver::SLESolver(const vector<vector<double>> &mMatrix) : m_matrix(mMatrix) {}
+SLESolver::SLESolver(const SystemOfEquations &sle) : sle(sle) {}
+

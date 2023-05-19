@@ -23,7 +23,7 @@ int main() {
         sle.addEquation(equation);
     }
 
-    SLESolver solver(sle.getMEquations());
+    SLESolver solver(sle);
     solver.solveSLE();
 
 //    cout << "Loodud lineaarvõrrandi süsteem" << "\n";
