@@ -6,11 +6,11 @@
 
 class SystemOfEquations {
 private:
-    std::vector<Equation> m_equations;
+    std::vector<std::vector<double>> m_equations;
     std::vector<char> m_variables;
 public:
 
-    [[nodiscard]] const std::vector<Equation> &getMEquations() const;
+    [[nodiscard]] const std::vector<std::vector<double>> &getMEquations() const;
     [[nodiscard]] const std::vector<char> &getMVariables() const;
 
     void addEquation(Equation &equation);
