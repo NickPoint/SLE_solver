@@ -1,16 +1,17 @@
 #ifndef PROJECT_SLESOLVER_H
 #define PROJECT_SLESOLVER_H
 
+#include "systemOfEquations.h"
 #include <vector>
 
 using namespace std;
 
 class SLESolver {
 private:
-    vector<vector<double>> m_matrix;
+    SystemOfEquations m_sle;
 
 public:
-    explicit SLESolver(const vector<vector<double>> &mMatrix);
+    explicit SLESolver(SystemOfEquations &sle);
     void solveSLE();
 };
 

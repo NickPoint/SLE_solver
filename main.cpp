@@ -1,8 +1,8 @@
-#include <iostream>
-#include <sstream>
 #include "equation.h"
 #include "systemOfEquations.h"
 #include "slesolver.h"
+#include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -23,42 +23,8 @@ int main() {
         sle.addEquation(equation);
     }
 
-    SLESolver solver(sle.getMEquations());
+    SLESolver solver(sle);
     solver.solveSLE();
-
-//    cout << "Loodud lineaarvõrrandi süsteem" << "\n";
-//    cout << "Võrrandid:" << "\n";
-//    for (auto& el : sle.getMEquations()) {
-//        cout << el.getMEquation() << '\n';
-//    }
-//
-//    cout << "\n";
-//    cout << "Muutujad:" << "\n";
-//    for (auto& el : sle.getMVariables()) {
-//        cout << el << '\n';
-//    }
-//
-//    cout << "\n";
-//    cout << "Koefitsiendid" << "\n";
-//    for (auto& equation : sle.getMEquations()) {
-//        for (auto& el : equation.getMCoefficients()) {
-//            cout << el << " ";
-//        }
-//        cout << "\n";
-//    }
-
-//    string test1{"3a - b + 14c = 7"};
-//    string test2{"2a + 2b + 3c = 0"};
-//    string test3{"a - 12b - 18c = 33"};
-//    Equation equation1(test1);
-//    Equation equation2(test2);
-//    Equation equation3(test3);
-//    SystemOfEquations sle{equation1, equation2, equation3};
-
-    // cout << equation.calculate_numberOfVariables() << endl;
-//    for (int i = 0; i < equation.calculate_numberOfVariables(); ++i) {
-//        cout << equation.getVariableNamesFromString().at(i) << endl;
-//    }
 
     return 0;
 }

@@ -6,27 +6,14 @@
 
 class SystemOfEquations {
 private:
-    std::vector<std::vector<double>> m_arguments;
+    std::vector<std::vector<double>> m_matrix;
     std::vector<char> m_variables;
 public:
 
-    [[nodiscard]] const std::vector<std::vector<double>> &getMEquations() const;
-    [[nodiscard]] const std::vector<char> &getMVariables() const;
+    [[nodiscard]] std::vector<std::vector<double>> &getMatrix();
+    [[nodiscard]] const std::vector<char> &getVariables() const;
 
     void addEquation(Equation &equation);
-
-//    template<typename... Args>
-//    void process_args(const Equation& eq, Args... args) {
-//        m_arguments.push_back(eq);
-//        process_args(args...);
-//    }
-//
-//public:
-//    template<typename... Args>
-//    explicit SystemOfEquations(Args... args) {
-//        process_args(args...);
-//    }
 };
-
 
 #endif //PROJECT_SYSTEMOFEQUATIONS_H

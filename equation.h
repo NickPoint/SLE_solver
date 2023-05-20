@@ -8,7 +8,6 @@
 class Equation {
 private:
     std::string m_equation;
-    unsigned int m_numberOfVariables;
     std::vector<char> m_variables;
     std::vector<double> m_arguments;
 
@@ -18,9 +17,8 @@ public:
     void getArgumentsFromString();
     void getVariableNamesFromString();
 
-    [[nodiscard]] const std::string &getMEquation() const;
-    [[nodiscard]] const std::vector<char>& getMVariables() const;
-    [[nodiscard]] const std::vector<double> &getMCoefficients() const;
+    [[nodiscard]] const std::vector<char>& getVariables() const;
+    [[nodiscard]] const std::vector<double>& getArguments() const;
 };
 
 #endif //PROJECT_EQUATION_H
