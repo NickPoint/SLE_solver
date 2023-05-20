@@ -4,16 +4,12 @@
 #include "systemOfEquations.h"
 #include <vector>
 
-using namespace std;
-
 class SLESolver {
 private:
     SystemOfEquations m_sle;
-
 public:
     explicit SLESolver(SystemOfEquations &sle);
     void solveSLE();
 };
-
 
 #endif //PROJECT_SLESOLVER_H

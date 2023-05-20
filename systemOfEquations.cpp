@@ -7,7 +7,7 @@ void SystemOfEquations::addEquation(Equation &equation) {
         || m_variables.empty()) {
         if (m_variables.empty()) m_variables = variables; //teeb kopeerimist
         m_matrix.push_back(equation.getArguments());
-    } else throw std::invalid_argument("Muutujad ei tohi samas võrrandisüsteemis olla erinevad");
+    } else throw std::invalid_argument("Muutujate nimede komplekt (x, y, z, ...) peab olema igas võrrandis sama ja igal võrrandil peab olema sama muutujate jada!");
 }
 
 const std::vector<char> &SystemOfEquations::getVariables() const {

@@ -4,7 +4,6 @@
 #include <vector>
 #include <string>
 
-//lisada classi malli tüüp
 class Equation {
 private:
     std::string m_equation;
